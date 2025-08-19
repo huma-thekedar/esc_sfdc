@@ -1,0 +1,14 @@
+.custom-container{
+	color : black;
+}
+.no-click{
+	pointer-events: none;
+}
+.cursor-click{
+	cursor: pointer;
+}
+.listView{
+	background: white;
+    padding: 8px;
+    border-radius: 4px;
+}

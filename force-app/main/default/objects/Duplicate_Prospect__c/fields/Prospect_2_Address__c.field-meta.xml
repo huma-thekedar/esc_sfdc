@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prospect_2_Address__c</fullName>
+    <externalId>false</externalId>
+    <formula>/* Street */
+Prospect_2__r.ESC_NBC_Address__Street__s
+/* + “, City” if City exists */
+&amp; IF(
+    NOT( ISBLANK( Prospect_2__r.ESC_NBC_Address__City__s ) ),
+    &quot;, &quot; &amp; Prospect_2__r.ESC_NBC_Address__City__s,
+    &quot;&quot;
+)
+/* + “, StateCode ZIP” if StateCode exists */
+&amp; IF(
+    NOT( ISBLANK( TEXT( Prospect_2__r.ESC_NBC_Address__StateCode__s ) ) ),
+    &quot;, &quot;
+      &amp; TEXT( Prospect_2__r.ESC_NBC_Address__StateCode__s )
+      &amp; &quot; &quot;
+      &amp; Prospect_2__r.ESC_NBC_Address__PostalCode__s,
+    &quot;&quot;
+)</formula>
+    <label>Prospect 2 Address</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

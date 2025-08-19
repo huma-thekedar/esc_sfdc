@@ -1,0 +1,110 @@
+<template>
+    <div if:false={showListView} class="slds-grid slds-gutters slds-theme_default slds-wrap">
+        <div class="slds-col slds-size_12-of-12 slds-grid slds-wrap" style="padding-top:0.5rem;">
+            <div class="slds-col slds-size_4-of-12 customAdd " style="top: -5px;">
+                Search Address
+                <lightning-input-address  street-label="Street" city-label="City"
+                    country-label="Country" province-label="State" postal-code-label="PostalCode" street={street}
+                    city={city} country={country} province={province} postal-code={postalcode} show-address-lookup
+                    onchange={addressInputChange} style="top: -12px;">
+                </lightning-input-address>
+            </div>
+            <div class="slds-col slds-size_4-of-12">
+                Miles
+                <lightning-input type="number" name="input1" value={searchmiles} onchange={milesUpdated} style="top: -8px;">
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_4-of-12">
+                Filter By Active/InActive
+                <lightning-combobox name="jobStatus" value={jobStatus}
+                    placeholder="Select Status" options={jobStatusOptions} onchange={handleStatusChange} style="top: -8px;" disabled={filteredDataLength}>
+                </lightning-combobox>
+            </div>
+
+            <!-- <div class="slds-col slds-size_3-of-12">
+                Filter By Job Type
+                <lightning-combobox name="jobType" value={jobType}
+                    placeholder="Select Job Title" options={jobTitleOption} onchange={handleJobTitleChange} style="top: -8px;" disabled={filteredDataLength}>
+                </lightning-combobox>
+            </div> -->
+            <!-- <div class="slds-col slds-size_3-of-12">
+                Filter By Type
+                <lightning-combobox name="recordType" value={recordTypeValue}
+                    placeholder="Select Record Type" options={recordTypeOptions} onchange={handleRecordTypeChange} style="top: -8px;" disabled={filteredDataLength}>
+                </lightning-combobox>
+            </div> -->
+        </div>
+        <div class="slds-col slds-size_12-of-12 slds-grid slds-wrap slds-p-bottom--large" style="padding-top:0.2rem;">
+            <div class="slds-col slds-size_6-of-12">
+                <template if:true={datafound}>
+                    <div class="">
+                        <hr style="margin:2px">
+                        <div style="text-align: center;">
+                            <b style="color: green;">Search Result:</b>
+                        </div>
+                        <hr style="margin:8px">
+                        <!-- <lightning-datatable key-field="value" data={filteredData} columns={columns}
+                            hide-checkbox-column onrowaction={handleRowAction}>
+                        </lightning-datatable> -->
+                        <!-- <lightning-datatable class="wrapped-header-datatable"
+                            key-field="value"
+                            data={filteredData}
+                            columns={columns}
+                            hide-checkbox-column
+                            onrowaction={handleRowAction}></lightning-datatable> -->
+
+                            <lightning-datatable  key-field="value"
+                            data={filteredData}
+                            columns={columns}
+                            wrap-table-header="all"
+                            hide-checkbox-column
+                            onrowaction={handleRowAction}></lightning-datatable>
+
+                    </div>
+                </template>
+                <template if:false={datafound}>
+                    <b>No results to display. Please search using a valid address.</b>
+                </template>
+            </div>
+            <div class="slds-col slds-size_6-of-12">
+                <!-- <lightning-map map-markers={filterMapMarkers} list-view="hidden" zoom-level="10" style="min-width: 37rem; max-width: 45rem; height: 20rem;"> -->
+                <lightning-map map-markers={filterMapMarkers} list-view="hidden" zoom-level="10">
+                </lightning-map>
+            </div>
+        </div>
+    </div>
+    <div if:true={showListView} class="listView" style="padding-top:0.2rem;">
+        <div class="">
+            <template if:true={datafound}>
+                <div class="">
+                    <hr style="margin:2px">
+                    <div style="text-align: center;">
+                        <b style="color: green;">Search Result:</b>
+                    </div>
+                    <hr style="margin:8px">
+                    <!-- <lightning-datatable key-field="value" data={filteredData} columns={columns} hide-checkbox-column
+                        onrowaction={handleRowAction}>
+                    </lightning-datatable> -->
+                    <!-- <lightning-datatable class="wrapped-header-datatable"
+                    key-field="value"
+                    data={filteredData}
+                    columns={columns}
+                    hide-checkbox-column
+                    onrowaction={handleRowAction}></lightning-datatable> -->
+                    <lightning-datatable  key-field="value"
+                            data={filteredData}
+                            columns={columns}
+                            wrap-table-header="all"
+                            hide-checkbox-column
+                            onrowaction={handleRowAction}></lightning-datatable>
+
+                </div>
+            </template>
+            <template if:false={datafound}>
+                <b>No results to display. Please search using a valid address.</b>
+            </template>
+        </div>
+        <lightning-map map-markers={filterMapMarkers} list-view="hidden" zoom-level="10">
+        </lightning-map>
+    </div>
+</template>

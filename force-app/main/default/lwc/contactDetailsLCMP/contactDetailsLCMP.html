@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Candidate Information">
+
+        <div class="editBtn"><lightning-button label="Edit" onclick={handleEditClick}></lightning-button></div>
+        <template if:true={contact}>
+            <div class="bodyMargin">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-4">
+                        <strong>Phone</strong>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <strong>Email</strong>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <strong>Position</strong>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <strong>Speciality</strong>
+                    </div>
+                </div>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-4">
+                        <lightning-formatted-phone value={contact.Phone}></lightning-formatted-phone>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <lightning-formatted-email value={contact.Email}></lightning-formatted-email>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        {contact.Position__c}
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        {contact.Speciality__c}
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template if:true={isLoading}>
+            <div class="slds-text-align_center slds-m-around_medium">
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </div>
+        </template>
+        <template if:true={hasError}>
+            <div class="slds-text-align_center slds-m-around_medium">
+                <p>Error loading contact details.</p>
+            </div>
+        </template>        
+    </lightning-card>
+</template>

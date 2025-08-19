@@ -1,0 +1,23 @@
+<template>
+    <div if:true={showListView} class="listView" style="padding-top:0.2rem;">
+        <div class="">
+            <template if:true={datafound}>
+                <div class="">
+                    <hr style="margin:2px">
+                    <div style="text-align: center;">
+                        <b style="color: green;">Search Result:</b>
+                    </div>
+                    <hr style="margin:8px">
+                    <lightning-datatable key-field="value" data={filteredData} columns={columns} hide-checkbox-column
+                        onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </div>
+            </template>
+            <template if:false={datafound}>
+                <b>No results to display. Please search using a valid address.</b>
+            </template>
+        </div>
+        <lightning-map map-markers={filterMapMarkers} list-view="hidden" zoom-level="10">
+        </lightning-map>
+    </div>
+</template>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>Screen_Shot_20240926_at_11643_AM</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>App for ESC Backend</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>true</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Every Special Child Backend</label>
+    <navType>Standard</navType>
+    <tabs>Job_Landing__c</tabs>
+    <tabs>Job_Opening__c</tabs>
+    <tabs>Prospect_Landing_Zone__c</tabs>
+    <tabs>ESC_NBC_Prospect__c</tabs>
+    <tabs>ESC_NBC_Prospect_Candidate_Search</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>Candidate_Search</tabs>
+    <tabs>ESC_NBC_Job_Search</tabs>
+    <tabs>Raw_Scraped_Data__c</tabs>
+    <tabs>User_Stories__c</tabs>
+    <tabs>Duplicate_Prospect__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Every_Special_Child_Backend_UtilityBar</utilityBar>
+</CustomApplication>

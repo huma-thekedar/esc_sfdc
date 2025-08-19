@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Active_Prospects_Share_with_Recruiter</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Active Prospects Share with Recruiter</label>
+        <sharedTo>
+            <role>Recruiter</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Active Prospect</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Data_team_Prospect_Access</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Data team Prospect Access</label>
+        <sharedTo>
+            <role>Data_Team</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Incomplete Lead,Active Prospect,Prospect (Lead database)</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Prospect_Share_with_Recruiters</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Prospect Share with Recruiters</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Recruiting_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Incomplete Lead,Prospect (Lead database)</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Prospect_Share_with_Sales_Rep</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Prospect Share with Sales Rep</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Sales_Rep_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Active Prospect</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Prospects_share_with_managers</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Prospects share with managers</label>
+        <sharedTo>
+            <role>Recruiting_Manager</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Recruiter</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

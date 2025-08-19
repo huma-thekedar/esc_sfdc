@@ -1,0 +1,26 @@
+.custom-card{
+    padding: 1rem;
+    border-bottom-left-radius: 0.625rem;
+    border-bottom-right-radius: 0.625rem;
+}
+.wrap-text {
+    white-space: pre-wrap; /* Preserves whitespace and wraps text without breaking words */
+    word-break: keep-all; /* Prevents breaking words in the middle */
+    overflow-wrap: break-word; /* Ensures long words wrap to the next line if necessary */
+}
+
+/* Ensure the dropdown container is positioned absolutely */
+.servicelinedropdowncss {
+    position: absolute; /* Makes the dropdown overlap other content */
+    z-index: 1000; /* Ensures the dropdown appears above other elements */
+    background-color: white; /* Add a background color to make it visible */
+    border: 1px solid #dddbda; /* Optional: Add a border for better visibility */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    width: 100%; /* Adjust width as needed */
+    max-height: 200px; /* Optional: Limit height and add scroll if needed */
+    overflow-y: auto; /* Optional: Add scroll if content overflows */
+}
+
+.custom-modal-content {
+    overflow: visible !important;
+}

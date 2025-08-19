@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prohibit_owner_change</fullName>
+    <active>true</active>
+    <description>Recruiter cannot change ownership of prospect records unless they are owned by Every Special Child. Recruiters are allowed to give ownership of their records to ESC.</description>
+    <errorConditionFormula>ISCHANGED(OwnerId) &amp;&amp; 
+    NOT(PRIORVALUE(OwnerId) = &apos;005Hr00000H00ea&apos;
+    || 
+    (OwnerId) = &apos;005Hr00000H00ea&apos;) 
+&amp;&amp;
+NOT(
+     $Profile.Name  = &apos;System Administrator&apos; || 
+     $Profile.Name  = &apos;Data Team&apos; ||
+      $UserRole.Name = &apos;Recruiting Manager&apos;
+)</errorConditionFormula>
+    <errorMessage>You are not allowed to change ownership for this Prospect unless you are the current owner or part of the Data Team/Admin group.</errorMessage>
+</ValidationRule>

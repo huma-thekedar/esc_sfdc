@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Prospects_Sales</fullName>
+    <columns>NAME</columns>
+    <columns>ESC_NBC_Job_Title__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>LAST_ACTIVITY</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ESC_NBC_RecordType_Name__c</field>
+        <operation>equals</operation>
+        <value>Active Prospect</value>
+    </filters>
+    <label>Active Prospects</label>
+    <sharedTo>
+        <role>Data_Team</role>
+        <role>Management</role>
+        <roleAndSubordinatesInternal>Recruiting_Manager</roleAndSubordinatesInternal>
+        <roleAndSubordinatesInternal>Sales_Rep_Manager</roleAndSubordinatesInternal>
+    </sharedTo>
+</ListView>

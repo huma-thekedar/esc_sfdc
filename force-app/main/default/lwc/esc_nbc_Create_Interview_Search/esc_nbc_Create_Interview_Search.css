@@ -1,0 +1,47 @@
+/* .suggestions-box {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f3f3f3;
+} */
+
+/* Wrap search input and suggestion box inside a relatively positioned container */
+.search-container {
+    position: relative;
+    width: 100%; /* ensures it doesn’t overflow its layout cell */
+}
+
+/* This box is now absolutely positioned below the input field */
+.suggestions-box {
+    position: absolute;
+    top: 100%;           /* directly below the input */
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;         /* match the container width */
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f3f3f3;
+}

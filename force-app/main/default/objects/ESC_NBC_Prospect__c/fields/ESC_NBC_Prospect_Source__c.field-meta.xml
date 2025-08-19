@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ESC_NBC_Prospect_Source__c</fullName>
+    <externalId>false</externalId>
+    <label>Prospect Source</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Purchased List</fullName>
+                <default>false</default>
+                <label>Purchased List</label>
+            </value>
+            <value>
+                <fullName>Website</fullName>
+                <default>false</default>
+                <label>Website</label>
+            </value>
+            <value>
+                <fullName>SLP.com</fullName>
+                <default>false</default>
+                <label>SLP.com</label>
+            </value>
+            <value>
+                <fullName>Scraped</fullName>
+                <default>false</default>
+                <label>Scraped</label>
+            </value>
+            <value>
+                <fullName>SchoolSpring</fullName>
+                <default>false</default>
+                <label>SchoolSpring</label>
+            </value>
+            <value>
+                <fullName>Edjoin</fullName>
+                <default>false</default>
+                <label>Edjoin</label>
+            </value>
+            <value>
+                <fullName>CareerJet</fullName>
+                <default>false</default>
+                <label>CareerJet</label>
+            </value>
+            <value>
+                <fullName>LinkedIn</fullName>
+                <default>false</default>
+                <label>LinkedIn</label>
+            </value>
+            <value>
+                <fullName>Internal Data</fullName>
+                <default>false</default>
+                <label>Internal Data</label>
+            </value>
+            <value>
+                <fullName>Indeed</fullName>
+                <default>false</default>
+                <label>Indeed</label>
+            </value>
+            <value>
+                <fullName>ZipRecruiter</fullName>
+                <default>false</default>
+                <label>ZipRecruiter</label>
+            </value>
+            <value>
+                <fullName>Monster</fullName>
+                <default>false</default>
+                <label>Monster</label>
+            </value>
+            <value>
+                <fullName>Career Portal</fullName>
+                <default>false</default>
+                <label>Career Portal</label>
+            </value>
+            <value>
+                <fullName>Neuvoo</fullName>
+                <default>false</default>
+                <label>Neuvoo</label>
+            </value>
+            <value>
+                <fullName>Resume Inbox</fullName>
+                <default>false</default>
+                <label>Resume Inbox</label>
+            </value>
+            <value>
+                <fullName>User Referral</fullName>
+                <default>false</default>
+                <label>User Referral</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

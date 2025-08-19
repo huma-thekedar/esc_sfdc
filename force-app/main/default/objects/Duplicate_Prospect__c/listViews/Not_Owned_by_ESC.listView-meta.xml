@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Not_Owned_by_ESC</fullName>
+    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Prospect_1__c</columns>
+    <columns>Prospect_1_Email__c</columns>
+    <columns>Prospect_1_Phone__c</columns>
+    <columns>Prospect_1_Owner__c</columns>
+    <columns>Match_Type__c</columns>
+    <columns>Prospect_2_Owner__c</columns>
+    <columns>Prospect_2__c</columns>
+    <columns>Prospect_2_Email__c</columns>
+    <columns>Prospect_2_Name__c</columns>
+    <columns>Prospect_2_Phone__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Prospect_1_Owner__c</field>
+        <operation>notEqual</operation>
+        <value>Every Special Child</value>
+    </filters>
+    <filters>
+        <field>Prospect_2_Owner__c</field>
+        <operation>notEqual</operation>
+        <value>Every Special Child</value>
+    </filters>
+    <filters>
+        <field>Is_Reciprocal__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Owned by Different Recruiters</label>
+</ListView>

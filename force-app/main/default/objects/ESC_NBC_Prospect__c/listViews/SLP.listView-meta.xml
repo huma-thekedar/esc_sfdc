@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SLP</fullName>
+    <columns>NAME</columns>
+    <columns>ESC_NBC_Job_Title__c</columns>
+    <columns>ESC_NBC_Phone__c</columns>
+    <columns>ESC_NBC_Email__c</columns>
+    <columns>ESC_NBC_Prospect_Source__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ESC_NBC_Prospect_Source__c</field>
+        <operation>equals</operation>
+        <value>SLP.com</value>
+    </filters>
+    <label>SLP</label>
+</ListView>

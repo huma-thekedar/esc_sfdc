@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Share_all_Contacts</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share all Contacts</label>
+        <sharedTo>
+            <role>Management</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>LastModifiedById</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_with_Data_Team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share with Data Team</label>
+        <sharedTo>
+            <role>Data_Team</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>LastModifiedById</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Share_ESC_Contacts</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Share ESC contacts with all Sales Reps</description>
+        <label>Share ESC Contacts</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Sales_Rep_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <sharedFrom>
+            <role>ESC</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

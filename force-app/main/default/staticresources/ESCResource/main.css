@@ -1,0 +1,9 @@
+.customAdd .slds-form-element[data-field="country"],.customAdd .slds-form-element[data-field="province"],.customAdd .slds-form-element[data-field="city"],.customAdd .slds-form-element[data-field="postalCode"],.customAdd .slds-form-element[data-field="street"]{
+	display:none;
+}
+.customAdd .slds-form-element__row.slds-grow{
+	height: 32px;
+}
+.customAdd legend.slds-form-element__label.slds-form-element__legend {
+	font-weight: 400;
+}

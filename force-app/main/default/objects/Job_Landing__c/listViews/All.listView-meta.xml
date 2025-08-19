@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Address__City__s</columns>
+    <columns>Job_Title__c</columns>
+    <columns>Job_URL__c</columns>
+    <columns>Currency__c</columns>
+    <columns>Job_Location__City__s</columns>
+    <columns>Job_Location__CountryCode__s</columns>
+    <columns>Job_Location__StateCode__s</columns>
+    <columns>Job_Location__Street__s</columns>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

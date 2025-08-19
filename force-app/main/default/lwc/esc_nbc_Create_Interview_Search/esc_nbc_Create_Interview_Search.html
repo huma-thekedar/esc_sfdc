@@ -1,0 +1,152 @@
+<template>
+    <lightning-layout multiple-rows>
+
+        <!-- Client Lookup - always visible -->
+        <lightning-layout-item size="6" style="padding-left: 0%;" padding="around-small">
+            <lightning-record-picker 
+                label="Client" 
+                placeholder="Search Client..." 
+                filter={clientFilter} 
+                object-api-name="Account"
+                value={accountId}
+                onchange={handleValueChange}                
+                disabled={isClientDisabled} >
+            </lightning-record-picker>
+        </lightning-layout-item>
+        <!-- </lightning-layout> -->
+
+        <!-- Prospect Lookup - hidden if launched from Prospect -->
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-record-picker 
+                label="Prospect" 
+                placeholder="Search Prospect..." 
+                filter={prospectFilter} 
+                object-api-name="ESC_NBC_Prospect__c"
+                value={prospectId}
+                onchange={handleValueChange}
+                required
+                disabled={isProspectDisabled}>
+            </lightning-record-picker>
+        </lightning-layout-item>
+
+       <lightning-layout-item size="6" style="padding-left: 0%;" padding="around-small">
+            <div class="search-container">
+                <lightning-input 
+                    type="search"
+                    label="Job Opening"
+                    name="jobOpening"
+                    placeholder="Search Job Opening..."
+                    value={jobOpeningName}
+                    disabled={isJobOpeningDisabled}
+                    onchange={handleJobInputChange}
+                    onfocus={handleJobInputFocus}
+                    class="search-input"
+                    field-level-help="Please select a client first">
+                </lightning-input>
+
+                <template if:true={showJobSuggestions}>
+                    <div class="slds-box suggestions-box">
+                        <template for:each={filteredJobOpenings} for:item="job">
+                            <div
+                                key={job.Id}
+                                class="suggestion-item"
+                                onclick={handleJobSelect}
+                                data-id={job.Id}
+                                data-name={job.Name}
+                            >
+                                {job.Name}
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+    </lightning-layout-item>
+
+        <!-- Job Opening Search - hidden if launched from Job Opening -->
+        <!-- <template if:false={launchedFromJobOpening}>
+            <lightning-layout-item size="6" padding="around-small">
+                <div class="search-container">
+                    <lightning-input 
+                        type="search"
+                        label="Job Opening"
+                        placeholder="Search Job Opening..."
+                        value={jobOpeningName}
+                        disabled={jobOpeningDisabled}
+                        onchange={handleJobInputChange}
+                        onfocus={handleJobInputFocus}
+                        class="search-input"
+                        required>
+                    </lightning-input>
+
+                    <template if:true={showJobSuggestions}>
+                        <div class="slds-box suggestions-box">
+                            <template for:each={filteredJobOpenings} for:item="job">
+                                <div
+                                    key={job.Id}
+                                    class="suggestion-item"
+                                    onclick={handleJobSelect}
+                                    data-id={job.Id}
+                                    data-name={job.Name}
+                                >
+                                    {job.Name}
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </lightning-layout-item>
+        </template> -->
+
+        <!-- Interviewer Lookup - only show for specific Interview record type -->
+       <!-- <template if:true={isInterviewRecordType}>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-record-picker 
+                    label="Interviewer Name" 
+                    placeholder="Search Interviewer..." 
+                    filter={interviewerFilter} 
+                    object-api-name="Contact"
+                    value={contactId}
+                    onchange={handleValueChange}>
+                </lightning-record-picker>
+            </lightning-layout-item>
+        </template>
+
+     -->
+
+<template if:true={isInterviewRecordType}>
+    <lightning-layout-item size="6" padding="around-small">
+            <div class="search-container">
+                <lightning-input 
+                    type="search"
+                    label="Interviewer Name"
+                    name="interviewerName"
+                    placeholder="Search Interviewer..."
+                    value={interviewerName}
+                    disabled={interviewerNameDisabled}
+                    onchange={handleInterviewerInputChange}
+                    onfocus={handleInterviewerInputFocus}
+                    class="interviewer-search-input"
+                    field-level-help="Please select a client first">
+                </lightning-input>
+                
+
+                <template if:true={showInterviewerSuggestions}>
+                    <div class="slds-box suggestions-box">
+                        <template for:each={filteredInterviewers} for:item="interviewer">
+                            <div
+                                key={interviewer.Id}
+                                class="suggestion-item"
+                                onclick={handleInterviewerSelect}
+                                data-id={interviewer.Id}
+                                data-name={interviewer.Name}
+                            >
+                                {interviewer.Name}
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+    </lightning-layout-item>
+    </template>
+    </lightning-layout>
+</template>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>63.0</apiVersion>
+	<isExposed>true</isExposed>
+	<targets>
+		<target>lightning__RecordPage</target>
+		<target>lightning__FlowScreen</target>
+	</targets>
+	<targetConfigs>
+		<targetConfig targets="lightning__FlowScreen">
+			<property name="recordId" type="String" role="inputOnly"/>
+			<property name="objectApiName" type="String" role="inputOnly"/>
+			<property name="sObjectName" type="String" role="inputOnly"/>
+			<property name="recordTypeName" type="String" role="inputOnly"/>
+			<property name="accountId" type="String" role="outputOnly"/>
+			<property name="prospectId" type="String" role="outputOnly"/>
+			<property name="jobOpeningId" type="String" role="outputOnly"/>
+			<property name="contactId" type="String" role="outputOnly"/>
+		</targetConfig>
+	</targetConfigs>
+</LightningComponentBundle>

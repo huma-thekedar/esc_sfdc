@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Run</name>
+        <label>Run Inactive Prospect Batch</label>
+        <locationX>176</locationX>
+        <locationY>252</locationY>
+        <actionName>ESC_NBC_LaunchInactiveProspectBatch</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>ESC_NBC_LaunchInactiveProspectBatch</nameSegment>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <description>When Active Prospects have no activity in 15 days move them back to prospects</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Prev_15th_Day</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() - 15</expression>
+    </formulas>
+    <interviewLabel>Active Prospect - Non Activity {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Active Prospect - Non Activity</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Run</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>LastModifiedDate</field>
+            <operator>LessThan</operator>
+            <value>
+                <elementReference>$Record.00NV1000003lZi9__NotFound</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>LastActivityDate</field>
+            <operator>LessThan</operator>
+            <value>
+                <elementReference>$Record.00NV1000003lZi9__NotFound</elementReference>
+            </value>
+        </filters>
+        <object>ESC_NBC_Prospect__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2025-05-15</startDate>
+            <startTime>23:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+</Flow>

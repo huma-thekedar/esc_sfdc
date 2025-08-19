@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>ESC Company</name>
+    <queueMembers>
+        <users>
+            <user>huma.thekedar@everyspecialchild.com</user>
+            <user>s.hasan@everyspecialchild.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Customer</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>ESC_NBC_Prospect__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Job_Opening__c</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

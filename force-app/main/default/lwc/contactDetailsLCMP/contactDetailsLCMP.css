@@ -1,0 +1,26 @@
+.contact-details-box {
+    border: 1px solid #d8dde6; 
+    border-radius: 0.25rem; 
+    padding: 1rem; 
+    background-color: #f4f6f9; 
+    margin-top: 1rem; 
+}
+
+.contact-field {
+    margin-bottom: 0.5rem; 
+}
+
+.contact-field strong {
+    display: inline-block;
+    width: 6rem; 
+    font-weight: 600; 
+}
+
+.bodyMargin {
+    margin: 15px;
+}
+
+.editBtn {
+    float: right;
+    margin: 10px;
+}

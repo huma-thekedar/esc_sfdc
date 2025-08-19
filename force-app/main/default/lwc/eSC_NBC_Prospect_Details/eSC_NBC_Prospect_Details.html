@@ -1,0 +1,196 @@
+<template>
+    <div>
+        <div class="slds-modal__header slds-text-align_left slds-p-around_medium slds-grid slds-grid_align-spread slds-theme_default" style="padding-top: 7px;padding-bottom: 9px">
+            <div class="slds-media slds-media_center">
+                <div class="slds-media__figure">
+                    <lightning-icon icon-name="standard:contact" size="medium" alternative-text="Candidate"></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                    <p>{recordTypeName}</p>
+                    <p class="slds-page-header__title slds-m-right--small slds-align-middle slds-line-clamp clip-text">{contactName}</p>
+                </div>
+            </div>
+        </div>
+        <div class="slds-modal__content slds-text-align_left custom-modal-content" style="padding: 2px;border-bottom-left-radius: 0.625rem;border-bottom-right-radius: 0.625rem; position:relative;">
+            <template if:false={isEditing}>
+                <div class="slds-grid slds-wrap slds-gutters slds-p-around_medium" style="margin-left: 0px;padding-top: 7px;padding-bottom: 9px;">
+                    <!-- Left Column -->
+                    <div class="slds-size_12-of-12">
+                        <div class="slds-grid">
+                            <div class="slds-size_4-of-12">
+                                <p><strong>Phone</strong></p>
+                            </div>
+                            <div class="slds-size_1-of-12">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="slds-size_7-of-12">
+                                <p>
+                                    <lightning-formatted-phone value={contactPhone}></lightning-formatted-phone>
+                                </p>
+                            </div>
+                        </div>
+                    <div>
+                    <div class="slds-size_12-of-12">
+                        <div class="slds-grid slds-m-top_small">
+                            <div class="slds-size_4-of-12">
+                                <p><strong>Job Title</strong></p>
+                            </div>
+                            <div class="slds-size_1-of-12">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="slds-size_7-of-12">
+                                <p>{position}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-size_12-of-12">
+                        <div class="slds-grid  slds-m-top_small">
+                            <div class="slds-size_4-of-12">
+                                <p><strong>Email</strong></p>
+                            </div>
+                            <div class="slds-size_1-of-12">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="slds-size_7-of-12">
+                                <p>
+                                    <lightning-formatted-email value={contactEmail}></lightning-formatted-email>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-size_12-of-12">
+                        <div class="slds-grid slds-m-top_small slds-wrap">
+                            <div class="slds-size_4-of-12">
+                                <p><strong>Speciality</strong></p>
+                            </div>
+                            <div class="slds-size_1-of-12">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="slds-size_7-of-12 slds-text-longform">
+                                <p class="wrap-text">{specialitiesForUI}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+                <hr style="margin-top: 0px;margin-bottom: 1rem;margin-left: 0rem;margin-right: 0rem;border: 1.5px solid #BEBFC5;"/>
+                <div class="slds-text-align_center" style="padding-bottom:2px">
+                    <template if:true={showEdit}>
+                        <lightning-button label="Edit" onclick={enableEditMode} class="footer-button">
+                        </lightning-button>
+                    </template>
+                </div>
+            </template>
+
+            <!-- Edit Mode -->
+            <template if:true={isEditing}>
+                <div>
+                    <div class="slds-grid slds-wrap slds-gutters slds-p-around_small">
+                        <div class="slds-size_6-of-12 slds-p-around_xx-small">
+                            <label class="slds-form-element__label"><strong>Phone:</strong></label>
+                            <lightning-input 
+                                label="Phone" 
+                                name="Phone"
+                                value={contactPhone} 
+                                onchange={handleInputChange} 
+                                variant="label-hidden" 
+                                class="slds-m-bottom_small">
+                            </lightning-input>
+                        </div>
+
+                        <div class="slds-size_6-of-12 slds-p-around_xx-small">
+                            <label class="slds-form-element__label"><strong>Email:</strong></label>
+                            <lightning-input 
+                                label="Email"
+                                name="Email" 
+                                value={contactEmail} 
+                                onchange={handleInputChange} 
+                                variant="label-hidden" 
+                                class="slds-m-bottom_small">
+                            </lightning-input>
+                        </div>
+
+                        <div class="slds-size_6-of-12 slds-p-around_xx-small" style="position: relative;">
+                            <label class="slds-form-element__label"><strong>Job Title:</strong></label>
+                            <lightning-combobox
+                                style="min-width: 180px;padding-bottom: 10px;max-height: 100px;position: relative !important;z-index: 9999; top:4px;"
+                                name="position"
+                                label="position"
+                                value={position}
+                                options={picklistMap.ESC_NBC_Job_Title__c}
+                                onchange={handleInputChange}
+                                variant="label-hidden" 
+                            ></lightning-combobox>
+                        </div>
+
+                        <div class="slds-size_6-of-12 slds-p-around_xx-small">
+                            <label class="slds-form-element__label"><strong>Speciality:</strong></label>
+                            <div class="h-label-value-info slds-p-top_xx-small">
+                                <div class="slds-form-element selectbox h-label-value-info">
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-combobox_container slds-size_x-medium h-label-value-info" data-id="serviceline" onmouseleave={handleleave}>
+                                                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                                                aria-expanded="true" aria-haspopup="listbox" data-id="serviceline" role="combobox" >
+                                                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right h-label-value-info mobilesize" role="none">
+                                                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value h-label-value-info mobilesize"
+                                                        data-id="serviceline" id="combobox-id-1" aria-controls="listbox-id-5" role="textbox"
+                                                        placeholder={specialityPlaceholder}  value={selectedmessage}
+                                                        onclick={handleShowdropdown} style="padding-top:0px"/>
+                                                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                                                            <lightning-icon icon-name="utility:down" size="x-small" aria-hidden="true"
+                                                                alternative-text="drop-down" title="click to drop-down">
+                                                            </lightning-icon>
+                                                        </span>	    
+                                                    </div>
+                                                    <template if:true={showservicelinedropdown}>
+                                                        <div id="listbox-id-1" data-id="serviceline" class={servicelinedropdowncss}
+                                                        role="listbox" onmouseleave={handleleave}>
+                                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                                <template for:each={picklistMap.ESC_NBC_Speciality__c} for:item="eachvalue">
+                                                                    <li role="presentation" class="slds-listbox__item" key={eachvalue.label} value={eachvalue.value}>
+                                                                        <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-is-selected"
+                                                                            role="option"  data-listname={eachvalue.label} >
+                                                                            <lightning-input  data-id="checkbox"
+                                                                                variant="inline-label" type="checkbox" value={eachvalue.value}
+                                                                                checked={eachvalue.selected} data-listname={eachvalue.label}
+                                                                                onchange={handleChange} style="padding-top:0px">
+                                                                            </lightning-input>
+                                                                            <span class="slds-truncate slds-has-flexi-truncate" title={eachvalue.label}>
+                                                                                <span class="slds-assistive-text" >Current Selection:</span>
+                                                                                {eachvalue.label} 
+                                                                            </span>    
+                                                                        </div>
+                                                                    </li>
+                                                                </template>
+                                                            </ul>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <div style="color:red;">
+                        <template if:true={error}>
+                            {error}
+                        </template>
+                    </div>
+                    <hr style="margin-top: 0rem;margin-bottom: 1rem;margin-left: 0rem;margin-right: 0rem;border: 1.5px solid #BEBFC5;"/>
+                    <div class="slds-text-align_center" style="padding-bottom:2px">
+                        <lightning-button label="Save" onclick={saveContact} variant="brand" class="footer-button">
+                        </lightning-button>
+                        <lightning-button label="Cancel" onclick={disableEditMode} class="footer-button" style="margin-left: 1rem;">
+                        </lightning-button>
+                    </div>
+            </template>
+        </div>
+    </div>
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+</template>

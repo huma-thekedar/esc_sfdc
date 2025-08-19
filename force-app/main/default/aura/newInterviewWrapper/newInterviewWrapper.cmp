@@ -1,0 +1,20 @@
+<aura:component 
+    implements="lightning:actionOverride,force:hasSObjectName,force:lightningQuickAction,force:hasRecordId,flexipage:availableForAllPageTypes,lightning:isUrlAddressable" 
+    access="global">
+    <!-- Attributes populated automatically by Salesforce -->
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="sObjectName" type="String" />
+    <aura:attribute name="recordTypeId" type="String" />
+    
+
+    <!-- Optional: log on init -->
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.onPageReferenceChanged}" />
+
+    <!-- Pass values to LWC -->
+    <c:launchInterviewFlow 
+        recordId="{!v.recordId}" 
+        sObjectName="{!v.sObjectName}" 
+        objectApiName="{!v.sObjectName}"
+        recordTypeId="{!v.recordTypeId}" />
+</aura:component>

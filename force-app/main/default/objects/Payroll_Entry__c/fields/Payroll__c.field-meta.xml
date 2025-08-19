@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+  <fullName>Payroll__c</fullName>
+  <label>Payroll</label>
+  <type>MasterDetail</type>
+  <referenceTo>Payroll__c</referenceTo>
+  <relationshipName>PayrollEntries</relationshipName>
+  <relationshipLabel>Payroll</relationshipLabel>
+  <reparentableMasterDetail>false</reparentableMasterDetail>
+  <writeRequiresMasterRead>true</writeRequiresMasterRead>
+</CustomField>
